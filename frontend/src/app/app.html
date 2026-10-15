@@ -1,0 +1,33 @@
+<main class="dashboard">
+  <div class="eyebrow">FRAUDWATCH / TRANSACTION MONITORING</div>
+  <h1>Transaction Screening</h1>
+  <p class="subtitle">Rule-based transaction risk assessment dashboard</p>
+
+  <section class="panel">
+    <h2>New screening request</h2>
+
+    <label>Sender</label>
+    <input [(ngModel)]="sender" placeholder="Sender name" />
+
+    <label>Receiver</label>
+    <input [(ngModel)]="receiver" placeholder="Receiver name" />
+
+    <label>Amount (EUR)</label>
+    <input type="number" [(ngModel)]="amount" />
+
+    <button (click)="checkTransaction()" [disabled]="loading()">
+      {{ loading() ? 'Checking...' : 'Check Transaction' }}
+    </button>
+  </section>
+
+  @if (status()) {
+    <section class="result" [class.flagged]="status() === 'FLAGGED'"
+                            [class.clear]="status() === 'CLEAR'">
+      <div class="eyebrow">SCREENING RESULT</div>
+      <h2>{{ status() }}</h2>
+      <p>{{ reason() }}</p>
+    </section>
+  }
+
+  <footer>FraudWatch Demo · Java Spring Boot + Angular · Synthetic data only</footer>
+</main>
