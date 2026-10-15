@@ -91,13 +91,28 @@ The Jenkinsfile defines two stages:
 
 The pipeline configuration has been created but has not yet been executed in Jenkins.
 
+## Automated Tests
+
+The backend includes six automated tests using JUnit 5 and Spring Boot,
+covering transaction screening rules and HTTP integration.
+
+Run tests with:
+
+    cd backend
+    ./mvnw test
+
+## Reactive API
+
+POST /api/transactions/reactive/check
+
+This endpoint uses Project Reactor Mono to return screening results.
+The application runs on Spring MVC with Reactor integration,
+not a fully reactive WebFlux server.
+
 ## Roadmap
 
 - PostgreSQL persistence
-- Automated screening tests
-- Separate Controller and Service layers
 - SOAP integration example
-- Spring WebFlux demonstration
 - OpenShift deployment manifests
 
 ## Disclaimer
